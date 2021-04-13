@@ -1,0 +1,10 @@
+#服务器端口
+server:
+  port: ${port}
+
+#数据源配置
+spring:
+  datasource:
+    url: ${boot.datasource.prod.url}
+    username: ${boot.datasource.prod.username}
+    password: ${boot.datasource.prod.password}

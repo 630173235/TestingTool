@@ -1,0 +1,129 @@
+{
+	"baseUrl": "http://192.168.1.103:12306",
+	"code": "0001",
+	"description": "kycReviewInfo api test",
+	"id": "1",
+	"name": "API Test",
+	"suits": [{
+		"id": "1",
+		"name": "kycReviewInfo GET",
+		"code": "kycReviewInfo GET",
+		"description": "kycReviewInfo GET",
+		"methodType": "GET",
+		"testCases": [{
+			"name": "kycReviewInfo GET 403 test",
+			"code": "kycReviewInfo403",
+			"description": "test",
+			"path": "/kycReviewInfo",
+			"methodType": "GET",
+			"asserts": 
+			[
+			  {
+				"type": "AssertStatus",
+				"method" : "equalsInteger",
+				"name" : "equals",
+				"params" :
+				[
+					{
+             		    "index":1,
+                        "name": "expect",
+             		    "value": 403
+             	    },
+             	    {
+             		    "index":2,
+                        "name": "actual",
+             		    "value":"@statusCode"
+             	    }
+				]
+			  }
+			]
+		},
+		{
+			"name": "kycReviewInfo GET 200 test",
+			"code": "kycReviewInfo200",
+			"description": "test",
+			"path": "/kycReviewInfo",
+			"headers" : {
+	              "token": "14085qswed"
+             },
+			"methodType": "GET",
+			"params": {
+				"customerNumber": "123456"
+			},
+			"asserts": 
+			[
+			  {
+				"type": "AssertStatus",
+				"method" : "equalsInteger",
+				"name" : "equals",
+				"params" :
+				[
+					{
+             		    "index":1,
+                        "name": "expect",
+             		    "value": 200
+             	    },
+             	    {
+             		    "index":2,
+                        "name": "actual",
+             		    "value":"@statusCode"
+             	    }
+				]
+			  },
+	          {
+				"type": "AssertStatus",
+				"method" : "equalsJsonContent",
+				"name" : "equals",
+				"params" :
+				[
+					{
+             		    "index":1,
+                        "name": "expect",
+             		    "value": 0.5
+             	    },
+             	    {
+             		    "index":2,
+                        "name": "actual",
+             		    "value":"^$.riskRating"
+             	    }
+				]
+			  }
+			]
+		},
+		{
+			"name": "kycReviewInfo GET 400 test",
+			"code": "kycReviewInfo400",
+			"description": "test",
+			"path": "/kycReviewInfo",
+			"headers" : {
+	              "token": "14085qswed"
+             },
+			"methodType": "GET",
+			"params": {
+				"customerNumber": "111111"
+			},
+			"asserts": 
+			[
+			  {
+				"type": "AssertStatus",
+				"method" : "equalsInteger",
+				"name" : "equals",
+				"params" :
+				[
+					{
+             		    "index":1,
+                        "name": "expect",
+             		    "value": 400
+             	    },
+             	    {
+             		    "index":2,
+                        "name": "actual",
+             		    "value":"@statusCode"
+             	    }
+				]
+			  }
+			]
+		}
+		]
+	}]
+}

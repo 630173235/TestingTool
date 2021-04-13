@@ -1,0 +1,44 @@
+#数据源配置
+spring:
+  redis:
+    ##redis 单机环境配置
+    host: 127.0.0.1   #192.168.1.103
+    port: 6379
+    password: 3edc
+    database: 0
+    ssl: false
+    ##redis 集群环境配置
+    #cluster:
+    #  nodes: 127.0.0.1:7001,127.0.0.1:7002,127.0.0.1:7003
+    #  commandTimeout: 5000
+  datasource:
+    # MySql
+    #url: jdbc:mysql://127.0.0.1:3306/monolith?useSSL=false&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&transformedBitIsBoolean=true&serverTimezone=GMT%2B8&nullCatalogMeansCurrent=true&allowPublicKeyRetrieval=true
+    #url: ${boot.datasource.dev.url}
+    #username: ${boot.datasource.dev.username}
+    #username: root
+    #password: ${boot.datasource.dev.password}
+    #password: zx883408
+    # PostgreSQL
+    #url: jdbc:postgresql://127.0.0.1:5432/bladex_boot
+    #username: postgres
+    #password: 123456
+    # Oracle
+    #  远程
+    #  url: jdbc:oracle:thin:@192.168.1.116:1521:orcl
+    #  本地
+    url: jdbc:oracle:thin:@127.0.0.1:1521:orcl
+    username: C##arvin
+    password: 883408
+    # SqlServer
+    #url: jdbc:sqlserver://127.0.0.1:1433;DatabaseName=bladex_boot
+    #username: bladex_boot
+    #password: bladex_boot
+
+rest-test:
+  report:
+    path: /root/tomcat/apache-tomcat-8.5.11/webapps/report
+    #path: d:/report
+    host: http://192.168.1.103:8080/report
+  testAssert:
+    packagePath: com.chinasofti.autotest.core.assertr

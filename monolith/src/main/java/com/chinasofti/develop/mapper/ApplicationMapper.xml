@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chinasofti.develop.mapper.ApplicationMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="applicationResultMap" type="com.chinasofti.develop.entity.Application">
+        <id column="id" property="id"/>
+        <result column="application_name" property="applicationName"/>
+        <result column="application_code" property="applicationCode"/>
+        <result column="application_port" property="applicationPort"/>
+        <result column="application_path" property="applicationPath"/>
+        <result column="remark" property="remark"/>
+        <result column="is_deleted" property="isDeleted"/>
+        <result column="entitisJson" property="entitisJson"/>
+        <result column="status" property="status"/>
+    </resultMap>
+   
+</mapper>

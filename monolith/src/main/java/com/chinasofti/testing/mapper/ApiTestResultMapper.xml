@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chinasofti.testing.mapper.ApiTestResultMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="apiTestResultResultMap" type="com.chinasofti.testing.entity.ApiTestResult">
+        <id column="id" property="id"/>
+        <result column="report_id" property="reportId"/>
+        <result column="api_test_case_name" property="apiTestCaseName"/>
+        <result column="api_name" property="apiName"/>
+        <result column="api_test_case_num" property="apiTestCaseNum"/>
+        <result column="response_times" property="responseTimes"/>
+        <result column="response_code" property="responseCode"/>
+        <result column="status" property="status"/>
+    </resultMap>
+
+
+    <select id="selectApiTestResultPage" resultMap="apiTestResultResultMap">
+        select * from testing_api_test_result
+    </select>
+
+</mapper>

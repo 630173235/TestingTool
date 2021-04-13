@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chinasofti.testing.mapper.ApiTestCaseMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="apiTestCaseResultMap" type="com.chinasofti.testing.entity.ApiTestCase">
+        <id column="id" property="id"/>
+        <result column="create_by" property="createBy"/>
+        <result column="create_user" property="createUser"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_user" property="updateUser"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="status" property="status"/>
+        <result column="is_deleted" property="isDeleted"/>
+        <result column="project_id" property="projectId"/>
+        <result column="name" property="name"/>
+        <result column="api_module_id" property="apiModuleId"/>
+        <result column="folder_id" property="folderId"/>
+        <result column="description" property="description"/>
+        <result column="request" property="request"/>
+        <result column="num" property="num"/>
+    </resultMap>
+    
+    <resultMap id="apiTestCasePageResultMap" type="com.chinasofti.testing.vo.ApiTestCasePage">
+        <id column="id" property="id"/>
+        <result column="num" property="num"/>
+        <result column="case_name" property="caseName"/>
+        <result column="module_id" property="moduleId"/>
+        <result column="folder_id" property="folderId"/>
+        <result column="status" property="status"/>
+        <result column="description" property="description"/>
+        <result column="create_by" property="createBy"/>
+        <result column="folder_name" property="folderName"/>
+        <result column="module_name" property="moduleName"/>
+        <result column="project_id" property="projectId"/>
+        <result column="project_name" property="projectName"/>
+    </resultMap>
+    
+    <select id="selectApiTestCasePage" resultMap="apiTestCasePageResultMap">
+        SELECT c.id AS id, c.num num, c.name case_name, c.api_module_id module_id, c.folder_id folder_id, c.status status, c.description description, c.create_by create_by, f.name folder_name, api.name module_name, c.project_id project_id,project.name project_name
+        FROM testing_api_test_case c  LEFT JOIN testing_api_module api ON c.api_module_id = api.id  LEFT JOIN testing_case_folder f  ON c.folder_id = f.id  LEFT JOIN testing_project project  ON c.project_id = project.id
+        <where> 
+            <if test="apiTestCaseQuery.projectId != null"> and c.project_id = #{apiTestCaseQuery.projectId}</if>
+            <if test="apiTestCaseQuery.folderId != null"> and c.folder_id = #{apiTestCaseQuery.folderId}</if>
+            <if test="apiTestCaseQuery.status != null"> and c.status = #{apiTestCaseQuery.status}</if>
+            <if test="apiTestCaseQuery.moduleId != null"> and c.api_module_id = #{apiTestCaseQuery.moduleId}</if>
+            and c.is_deleted = 0  
+        </where>
+    </select>
+
+
+</mapper>

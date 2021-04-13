@@ -1,0 +1,2 @@
+app.name=${serviceName}
+app.version=0.0.1
